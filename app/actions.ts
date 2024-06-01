@@ -142,32 +142,25 @@ export async function BuyEvent(formData: FormData) {
     });
 
     const session = await stripe.checkout.sessions.create({
-        mode: "payment",
+        mode: 'payment',
         line_items: [
             {
                 price_data: {
-                    currency: "usd",
-                    unit_amount: Math.round((parseFloat(data?.price) || 0) * 100),
+                    currency: 'usd',
+                    unit_amount: Math.round(data?.price as number * 100),
                     product_data: {
-                        name: data?.title as string,
-                        description: data?.description,
-                        images: data?.imageUrl ? [data.imageUrl] : [],
-                    },
+                        name: data?.name as string,
+                        description: data?.smallDescription,
+                        images: data?.images,
+                    }
+
                 },
                 quantity: 1,
             },
         ],
-        metadata: {
-            link: data?.url as string,
-        },
-        success_url:
-            process.env.NODE_ENV === "development"
-                ? "http://localhost:3000/payment/success"
-                : "https://event-test-prisma.vercel.app/payment/success",
-        cancel_url:
-            process.env.NODE_ENV === "development"
-                ? "http://localhost:3000/payment/cancel"
-                : "https://event-test-prisma.vercel.app/payment/cancel",
+        success_url: 'http://localhost:3000/payment/success',
+        cancel_url: 'http://localhost:3000/payment/cancel',
+
     });
 
     return redirect(session.url as string);
