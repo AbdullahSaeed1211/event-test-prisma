@@ -137,9 +137,16 @@ export async function BuyEvent(formData: FormData) {
             price: true,
             imageUrl: true,
             url: true,
-           
         }
     });
+
+    let unitAmount = 0;
+    if (typeof data?.price === 'number') {
+        unitAmount = Math.round(data.price * 100);
+    } else {
+        // Handle the case where price is not a number, e.g., set a default value or throw an error
+        throw new Error('Price is not a valid number');
+    }
 
     const session = await stripe.checkout.sessions.create({
         mode: 'payment',
@@ -147,20 +154,18 @@ export async function BuyEvent(formData: FormData) {
             {
                 price_data: {
                     currency: 'usd',
-                    unit_amount: Math.round(data?.price as number * 100),
+                    unit_amount: unitAmount,
                     product_data: {
-                        name: data?.name as string,
-                        description: data?.smallDescription,
-                        images: data?.images,
+                        name: data?.title as string,
+                        description: data?.description,
+                        images: [data?.imageUrl],
                     }
-
                 },
                 quantity: 1,
             },
         ],
         success_url: 'http://localhost:3000/payment/success',
         cancel_url: 'http://localhost:3000/payment/cancel',
-
     });
 
     return redirect(session.url as string);

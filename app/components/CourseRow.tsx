@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { CourseCard, LoadingEventCard } from "./CourseCard";
+import { CourseCard, LoadingCourseCard } from "./CourseCard";
 import prisma from "../lib/db";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
@@ -138,9 +138,9 @@ function LoadingState() {
     <div>
       <Skeleton className="h-8 w-56" />
       <div className="grid grid-cols-1 sm:grid-cols-2 mt-4 gap-10 lg:grid-cols-3">
-        <LoadingEventCard />
-        <LoadingEventCard />
-        <LoadingEventCard />
+        <LoadingCourseCard />
+        <LoadingCourseCard />
+        <LoadingCourseCard />
       </div>
     </div>
   );
