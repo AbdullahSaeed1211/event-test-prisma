@@ -167,11 +167,11 @@ export async function BuyEvent(formData: FormData) {
         success_url:
             process.env.NODE_ENV === "development"
                 ? "http://localhost:3000/payment/success"
-                : "https://event-app/payment/success",
+                : "https://event-test-prisma.vercel.app/payment/success",
         cancel_url:
             process.env.NODE_ENV === "development"
                 ? "http://localhost:3000/payment/cancel"
-                : "https://event-app/payment/cancel",
+                : "https://event-test-prisma.vercel.app/payment/cancel",
     });
 
     return redirect(session.url as string);

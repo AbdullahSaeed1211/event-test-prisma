@@ -1,6 +1,6 @@
 'use server'
 import { BuyEvent } from "@/app/actions";
-import { EventDescription } from "@/app/components/EventDescription";
+import { CourseDescription } from "@/app/components/CourseDescription";
 import { BuyButton } from "@/app/components/SubmitButton";
 import prisma from "@/app/lib/db";
 import { unstable_noStore as noStore } from "next/cache";
@@ -97,7 +97,7 @@ export default async function EventPage({
         <div className="border-t border-gray-200 mt-10" />
       </div>
       <div className="w-full max-w-2xl mx-auto mt-16 lg:max-w-none lg:mt-0 lg:col-span-4">
-        <EventDescription content={data?.description as JSONContent} />
+        <CourseDescription content={data?.description as JSONContent} />
       </div>
     </section>
   );

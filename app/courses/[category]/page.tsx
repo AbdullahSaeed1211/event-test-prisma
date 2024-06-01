@@ -1,4 +1,4 @@
-import { EventCard } from "@/app/components/EventCard"; // Updated import
+import { CourseCard } from "@/app/components/CourseCard"; // Updated import
 import prisma from "@/app/lib/db";
 import { CategoryTypes } from "@prisma/client"; // Updated import
 import { notFound } from "next/navigation";
@@ -53,7 +53,7 @@ export default async function CategoryPage({
     <section className="mx-auto max-w-7xl px-4 md:px-8">
       <div className="grid grid-cols-1 lg:grid-cols-3 sm:grid-cols-2 gap-10 mt-4">
         {data.map((event) => ( // Updated mapping to use EventCard component
-          <EventCard
+          <CourseCard
             key={event.id}
             images={[event.imageUrl]} // Assuming EventCard expects images as an array
             price={event.price}
