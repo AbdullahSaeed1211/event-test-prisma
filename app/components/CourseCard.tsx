@@ -61,7 +61,7 @@ export function CourseCard({
   );
 }
 
-export function LoadingEventCard() {
+export function LoadingCourseCard() {
   return (
     <div className="flex flex-col">
       <Skeleton className="w-full h-[230px]" />
