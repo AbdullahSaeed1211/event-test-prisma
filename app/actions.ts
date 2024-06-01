@@ -137,11 +137,7 @@ export async function BuyEvent(formData: FormData) {
             price: true,
             imageUrl: true,
             url: true,
-            organizer: {
-                select: {
-                    connectedAccountId: true,
-                },
-            },
+           
         }
     });
 

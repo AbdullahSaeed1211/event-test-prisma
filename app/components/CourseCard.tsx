@@ -18,7 +18,7 @@ interface iAppProps {
   id: string;
 }
 
-export function CourseCard({
+export default function CourseCard({
   images,
   title,
   price,
