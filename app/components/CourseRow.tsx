@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { EventCard, LoadingEventCard } from "./EventCard";
+import { CourseCard, LoadingEventCard } from "./EventCard";
 import prisma from "../lib/db";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
@@ -118,7 +118,7 @@ async function LoadRows({ category }: iAppProps) {
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-3 sm:grid-cols-2 mt-4 gap-10">
         {data.data.map((event) => (
-          <EventCard
+          <CourseCard
             key={event.id}
             imageUrl={event.imageUrl}
             title={event.title}
