@@ -3,10 +3,7 @@ import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { NextResponse } from "next/server";
 import { stripe } from "@/lib/stripe";
 import prisma from "@/app/lib/db";
-export async function GET() {
-    const { getUser } = getKindeServerSession();
-    const user = await getUser();
-	@@ -12,18 +13,45 @@ export async function GET() {
+ export async function GET() {
     // check if user exists in db
     let dbUser = await prisma.user.findUnique({
         where: {
@@ -52,4 +49,4 @@ export async function GET() {
             }
         });
     }
-}
+ }
